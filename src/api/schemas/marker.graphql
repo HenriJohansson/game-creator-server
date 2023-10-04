@@ -1,0 +1,49 @@
+scalar DateTime
+
+type Marker {
+  id: ID
+  marker_name: String
+  creation_date: DateTime
+  description: String
+  location: GeoJsonPoint
+  owner: User
+}
+
+type GeoJsonPoint {
+  type: PointEnum
+  coordinates: [Float]
+}
+
+input GeoJsonPointInput {
+  type: PointEnum!
+  coordinates: [Float]!
+}
+
+input Coordinates {
+  lat: Float!
+  lng: Float!
+}
+
+enum PointEnum {
+  Point
+}
+
+type Query {
+  markers: [Marker]
+  markerById(id: ID!): Marker
+}
+
+type Mutation {
+  addMarker(
+    marker_name: String!
+    location: GeoJsonPointInput!
+    creation_date: DateTime!
+  ): Marker
+  updateMarker(
+    id: ID!
+    marker_name: String
+    location: GeoJsonPointInput
+    creation_date: DateTime
+  ): Marker
+  deleteMarker(id: ID!): Marker
+}
