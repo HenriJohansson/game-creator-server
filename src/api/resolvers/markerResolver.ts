@@ -1,6 +1,6 @@
-import {GraphQLError} from 'graphql';
+//import {GraphQLError} from 'graphql';
 import {Marker} from '../../interfaces/Marker';
-import {UserIdWithToken} from '../../interfaces/User';
+//import {UserIdWithToken} from '../../interfaces/User';
 import markerModel from '../models/markerModel';
 
 // TODO: animalResolver
@@ -16,15 +16,17 @@ export default {
   Mutation: {
     addMarker: async (
       _parent: undefined,
-      args: Marker,
-      user: UserIdWithToken
+      args: Marker
+      /* user: UserIdWithToken */
     ) => {
+      /*
       if (!user.id) {
         throw new GraphQLError('Not authorized', {
           extensions: {code: 'NOT_AUTHORIZED'},
         });
       }
-      args.owner = user.id;
+      */
+      args.owner = null; /*user.id*/
       const marker = new markerModel(args);
       return await marker.save();
     },

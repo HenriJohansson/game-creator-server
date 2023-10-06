@@ -6,7 +6,7 @@ export default interface Marker extends Document {
   description: String;
   creation_date: Date;
   location: Point;
-  owner: Types.ObjectId | string;
+  owner: Types.ObjectId | string | null;
 }
 
 export {Marker};

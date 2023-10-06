@@ -38,7 +38,7 @@ const markerSchema = new Schema<Marker>({
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    required: false,
   },
 });
 
