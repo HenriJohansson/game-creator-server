@@ -1,12 +1,12 @@
+import Marker from '../../interfaces/Marker';
 import fetchData from '../../functions/fetchData';
-import {Animal} from '../../interfaces/Animal';
 import AuthMessageResponse from '../../interfaces/AuthMessageResponse';
 import LoginMessageResponse from '../../interfaces/LoginMessageResponse';
 import {User} from '../../interfaces/User';
 
 export default {
-  Animal: {
-    owner: async (parent: Animal) => {
+  Marker: {
+    owner: async (parent: Marker) => {
       console.log(parent);
       const user = await fetchData<AuthMessageResponse>(
         `${process.env.AUTH_URL}/users/${parent.owner}`
