@@ -1,9 +1,12 @@
 import {Schema, model} from 'mongoose';
 import {Marker} from '../../interfaces/Marker';
-// Schema for the Animal model
-// based on the Animal interface located at: src/interfaces/Animal.ts
 
 const markerSchema = new Schema<Marker>({
+  id: {
+    type: String,
+    reguired: true,
+    minlength: 1,
+  },
   marker_name: {
     type: String,
     required: true,
@@ -16,7 +19,7 @@ const markerSchema = new Schema<Marker>({
   creation_date: {
     type: Date,
     required: true,
-    max: Date.now(),
+    max: new Date(Date.now() + 24 * 3600000),
   },
   location: {
     type: {

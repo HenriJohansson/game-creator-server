@@ -1,4 +1,3 @@
-import {GraphQLError} from 'graphql';
 import {Marker} from '../../interfaces/Marker';
 import {UserIdWithToken} from '../../interfaces/User';
 import markerModel from '../models/markerModel';
@@ -18,12 +17,18 @@ export default {
       args: Marker,
       user: UserIdWithToken
     ) => {
-      if (!user.id) {
+      console.log(
+        'A new marker was received with args: ',
+        args,
+        ' and user ',
+        user
+      );
+      /* if (!user.id) {
         throw new GraphQLError('Not authorized', {
           extensions: {code: 'NOT_AUTHORIZED'},
         });
       }
-      args.owner = user.id;
+      args.owner = user.id; */
       const marker = new markerModel(args);
       return await marker.save();
     },

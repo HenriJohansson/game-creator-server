@@ -35,6 +35,7 @@ type Query {
 
 type Mutation {
   addMarker(
+    id: ID!
     marker_name: String!
     location: GeoJsonPointInput!
     creation_date: DateTime!
