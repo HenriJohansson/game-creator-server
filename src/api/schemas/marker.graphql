@@ -33,7 +33,7 @@ type Query {
   markerById(id: ID!): Marker
 }
 
-type Mutation {
+""" type Mutation {
   addMarker(
     id: ID!
     marker_name: String!
@@ -47,4 +47,24 @@ type Mutation {
     creation_date: DateTime
   ): Marker
   deleteMarker(id: ID!): Marker
+} """
+type Mutation {
+  addMarker(
+    id: ID!
+    marker_name: String!
+    location: GeoJsonPointInput!
+    creation_date: DateTime!
+    token: String!
+  ): Marker
+  updateMarker(
+    id: ID!
+    marker_name: String
+    location: GeoJsonPointInput
+    creation_date: DateTime
+    token: String!
+  ): Marker
+  deleteMarker(
+    id: ID!
+    token: String!
+  ): Marker
 }
