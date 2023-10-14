@@ -7,6 +7,7 @@ type Marker {
   description: String
   location: GeoJsonPoint
   owner: User
+  token: String
 }
 
 type GeoJsonPoint {
@@ -23,37 +24,21 @@ input Coordinates {
   lat: Float!
   lng: Float!
 }
-
 enum PointEnum {
   Point
 }
-
 type Query {
   markers: [Marker]
   markerById(id: ID!): Marker
 }
 
-""" type Mutation {
-  addMarker(
-    id: ID!
-    marker_name: String!
-    location: GeoJsonPointInput!
-    creation_date: DateTime!
-  ): Marker
-  updateMarker(
-    id: ID!
-    marker_name: String
-    location: GeoJsonPointInput
-    creation_date: DateTime
-  ): Marker
-  deleteMarker(id: ID!): Marker
-} """
 type Mutation {
   addMarker(
     id: ID!
     marker_name: String!
     location: GeoJsonPointInput!
     creation_date: DateTime!
+    owner: UserInput
     token: String!
   ): Marker
   updateMarker(

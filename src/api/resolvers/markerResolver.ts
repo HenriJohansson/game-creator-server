@@ -1,15 +1,15 @@
 import CustomError from '../../classes/CustomError';
-import {Marker} from '../../interfaces/Marker';
-import {UserIdWithToken} from '../../interfaces/User';
+import { Marker } from '../../interfaces/Marker';
+import { UserIdWithToken } from '../../interfaces/User';
 import markerModel from '../models/markerModel';
-import {GraphQLError} from 'graphql';
+import { GraphQLError } from 'graphql';
 
 export default {
   Query: {
     markers: async () => {
       return await markerModel.find();
     },
-    markerById: async (_parent: undefined, args: {id: string}) => {
+    markerById: async (_parent: undefined, args: { id: string }) => {
       return await markerModel.findById(args.id);
     },
   },
@@ -23,20 +23,24 @@ export default {
         'A new marker was received with args: ',
         args,
         ' and user ',
-        user
+        user,
+        ' Owner ',
+        args.owner
       );
       if (!user.id) {
         throw new GraphQLError('Not authorized', {
-          extensions: {code: 'NOT_AUTHORIZED'},
+          extensions: { code: 'NOT_AUTHORIZED' },
         });
       }
       args.owner = user.id;
       const marker = new markerModel(args);
-      return await marker.save();
+      const result = await marker.save()
+      console.log(result);
+      return result;
     },
     updateMarker: async (
       _parent: undefined,
-      args: {marker: Marker; token: string}
+      args: { marker: Marker; token: string }
     ) => {
       if (args.token === 'greatest-secret-token') {
         return await markerModel.findByIdAndUpdate(
@@ -52,7 +56,7 @@ export default {
     },
     deleteMarker: async (
       _parent: undefined,
-      args: {id: string; token: string}
+      args: { id: string; token: string }
     ) => {
       if (args.token === 'greatest-secret-token') {
         return await markerModel.findByIdAndDelete(args.id);
