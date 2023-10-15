@@ -10,5 +10,6 @@ The app is intended to be used by those who enjoy these sorts of real life adven
 3. Now you should be able to see the added markers. To view the info click on the marker.
 4. To add a new marker write at least a name for the marker in the left box. Description is optional.
 5. Move the map around by dragging and scrolling for zoom until you're in the desired location you want to add the marker and click on the map. This should have now added a new marker. **NOTE: All markers are visible to everyone in this version so we would strongly advise you to not place a marker with location and/or info you might not want others to see!**
-
+6. To delete a marker click on the marker and push the **Delete** button inside the pop-up. **Please only delete markers you have added. Don't delete markers others have placed!**
+   
 [Link to the game](https://master--jocular-mandazi-1787dd.netlify.app/#/)
