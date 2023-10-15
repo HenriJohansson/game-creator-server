@@ -1,6 +1,10 @@
 # Game Creator
 
-The idea was to create an app to enable people to make their own versions of the game that is featured in the very popular show on YouTube [Jet Lag: The Game](https://www.youtube.com/watch?v=LxLgmsmvXOE&list=PLB7ZcpBcwdC4SeH7qNw05wgU03HlRGiiS). The idea is that the app shows markers on a map that would be tasks the players need to complete. A game itself can be very local, in a town for example or as large as the world.
+**Made by** <br/>
+Henri Johansson </br>
+Miro Mariapori
+
+The idea was to create an app to enable people to make their own versions of the game that is featured in the very popular show on YouTube [Jet Lag: The Game](https://www.youtube.com/watch?v=LxLgmsmvXOE&list=PLB7ZcpBcwdC4SeH7qNw05wgU03HlRGiiS). The idea is that the app shows markers on a map that would be tasks the players need to travel to and complete the described task. A game itself can be very local, in a town for example or as large as the world.
 
 The app is intended to be used by those who enjoy these sorts of real life adventure type games.
 
