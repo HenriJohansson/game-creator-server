@@ -1,4 +1,3 @@
-import CustomError from '../../classes/CustomError';
 import {Marker} from '../../interfaces/Marker';
 import {UserIdWithToken} from '../../interfaces/User';
 import markerModel from '../models/markerModel';
@@ -47,27 +46,19 @@ export default {
       _parent: undefined,
       args: {marker: Marker; token: string}
     ) => {
-      if (args.token === 'greatest-secret-token') {
-        return await markerModel.findByIdAndUpdate(
-          args.marker.id,
-          args.marker,
-          {
-            new: true,
-          }
-        );
-      } else {
-        return new CustomError('Forbidden', 401);
-      }
+      return await markerModel.findOneAndUpdate(
+        {id: args.marker.id},
+        args.marker,
+        {
+          new: true,
+        }
+      );
     },
     deleteMarker: async (
       _parent: undefined,
       args: {id: string; token: string}
     ) => {
-      if (args.token === 'greatest-secret-token') {
-        return await markerModel.findByIdAndDelete(args.id);
-      } else {
-        return new CustomError('Forbidden', 401);
-      }
+      return await markerModel.findOneAndDelete({id: args.id});
     },
   },
 };
