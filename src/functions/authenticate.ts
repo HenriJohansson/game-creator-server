@@ -1,6 +1,6 @@
-import { Request } from 'express';
+import {Request} from 'express';
 import jwt from 'jsonwebtoken';
-import { TokenUser, UserIdWithToken } from '../interfaces/User';
+import {TokenUser, UserIdWithToken} from '../interfaces/User';
 
 export default async (req: Request) => {
   const bearer = req.headers.authorization;
@@ -23,15 +23,13 @@ export default async (req: Request) => {
     return {};
   }
 
-
   //check that user is in auth server
   const response = await fetch(`${process.env.AUTH_URL}/users/token`, {
-    headers: { Authorization: req.headers.authorization as string },
+    headers: {Authorization: req.headers.authorization as string},
   });
   if (!response.ok) {
     return {};
   }
-
 
   const userIdWithToken: UserIdWithToken = {
     id: userFromToken.id,

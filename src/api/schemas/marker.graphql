@@ -36,20 +36,16 @@ type Mutation {
   addMarker(
     id: ID!
     marker_name: String!
+    description: String!
     location: GeoJsonPointInput!
     creation_date: DateTime!
-    owner: UserInput
-    token: String!
   ): Marker
   updateMarker(
     id: ID!
     marker_name: String
+    description: String!
     location: GeoJsonPointInput
     creation_date: DateTime
-    token: String!
   ): Marker
-  deleteMarker(
-    id: ID!
-    token: String!
-  ): Marker
+  deleteMarker( id: ID! ): Marker
 }

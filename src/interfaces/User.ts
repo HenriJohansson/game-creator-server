@@ -21,4 +21,4 @@ interface UserIdWithToken {
   token: string;
 }
 
-export { User, UserLogin, TokenUser, UserIdWithToken };
+export {User, UserLogin, TokenUser, UserIdWithToken};

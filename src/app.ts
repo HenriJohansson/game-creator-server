@@ -2,16 +2,16 @@ require('dotenv').config();
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import {ApolloServer} from '@apollo/server';
+import {expressMiddleware} from '@apollo/server/express4';
 import typeDefs from './api/schemas/index';
 import resolvers from './api/resolvers/index';
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
 } from '@apollo/server/plugin/landingPage/default';
-import { notFound, errorHandler } from './middlewares';
-import { MyContext } from './interfaces/MyContext';
+import {notFound, errorHandler} from './middlewares';
+import {MyContext} from './interfaces/MyContext';
 import authenticate from './functions/authenticate';
 const app = express();
 
@@ -26,16 +26,16 @@ const app = express();
     app.use((req, res, next) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       next();
-    })
+    });
     const server = new ApolloServer<MyContext>({
       typeDefs,
       resolvers,
       plugins: [
         process.env.ENVIRONMENT === 'production'
           ? ApolloServerPluginLandingPageProductionDefault({
-            embed: true as false,
-          })
-          : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
+              embed: true as false,
+            })
+          : ApolloServerPluginLandingPageLocalDefault({footer: false}),
       ],
       includeStacktraceInErrorResponses: false,
     });
@@ -46,7 +46,7 @@ const app = express();
       cors<cors.CorsRequest>(),
       express.json(),
       expressMiddleware(server, {
-        context: ({ req }) => authenticate(req),
+        context: ({req}) => authenticate(req),
       })
     );
 
