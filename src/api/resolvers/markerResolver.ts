@@ -9,6 +9,13 @@ export default {
     markers: async () => {
       return await markerModel.find();
     },
+    markersByUser: async (
+      __parent: undefined,
+      args: undefined,
+      context: UserIdWithToken
+    ) => {
+      return await markerModel.find({owner: context.id});
+    },
     markerById: async (_parent: undefined, args: {id: string}) => {
       return await markerModel.findById(args.id);
     },
@@ -19,19 +26,18 @@ export default {
       args: Marker,
       context: UserIdWithToken
     ) => {
-      console.log(
+      /* console.log(
         'A new marker was received with args: ',
         args,
         ' and context ',
         context
-      );
-      /*
+      ); */
       if (!context.id) {
         throw new GraphQLError('Not authorized', {
           extensions: {code: 'NOT_AUTHORIZED'},
         });
       }
-      args.owner = context.id; */
+      args.owner = context.id;
       const marker = new markerModel(args);
       const result = await marker.save();
       console.log(result);

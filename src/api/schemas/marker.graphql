@@ -7,7 +7,6 @@ type Marker {
   description: String
   location: GeoJsonPoint
   owner: User
-  token: String
 }
 
 type GeoJsonPoint {
@@ -29,6 +28,7 @@ enum PointEnum {
 }
 type Query {
   markers: [Marker]
+  markersByUser: [Marker]
   markerById(id: ID!): Marker
 }
 
