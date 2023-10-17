@@ -1,5 +1,5 @@
-import {Schema, model} from 'mongoose';
-import {Marker} from '../../interfaces/Marker';
+import { Schema, model } from 'mongoose';
+import { Marker } from '../../interfaces/Marker';
 
 const markerSchema = new Schema<Marker>({
   id: {
@@ -19,7 +19,6 @@ const markerSchema = new Schema<Marker>({
   creation_date: {
     type: Date,
     required: true,
-    max: new Date(Date.now() + 24 * 3600000),
   },
   location: {
     type: {
