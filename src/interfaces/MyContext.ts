@@ -1,7 +1,7 @@
-import {UserIdWithToken} from './User';
+import { UserIdWithToken } from './User';
 
 interface MyContext {
   userIdWithToken?: UserIdWithToken;
 }
 
-export {MyContext};
+export { MyContext };

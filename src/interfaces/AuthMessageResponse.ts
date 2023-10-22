@@ -1,4 +1,4 @@
-import {UserLogin} from './User';
+import { UserLogin } from './User';
 
 export default interface AuthMessageResponse {
   message: string;

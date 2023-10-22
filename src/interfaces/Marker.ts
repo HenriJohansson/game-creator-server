@@ -1,5 +1,5 @@
-import {Document, Types} from 'mongoose';
-import {Point} from 'geojson';
+import { Document, Types } from 'mongoose';
+import { Point } from 'geojson';
 
 export default interface Marker extends Document {
   id: String;
@@ -10,4 +10,4 @@ export default interface Marker extends Document {
   owner: Types.ObjectId | string | null;
 }
 
-export {Marker};
+export { Marker };
